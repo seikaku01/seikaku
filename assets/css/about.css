@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Arial+Nova+Condensed&display=swap');
+
+:root {
+  --body-font-size: 1em; /* デフォルトのフォントサイズ */
+  --top-section-font-size: 1.4em; /* topセクションのデフォルトフォントサイズ */
+  --middle-section-font-size: 1.4em; /* middleセクションのデフォルトフォントサイズ */
+  --text-section-font-size: 1.4em; /* textセクションのデフォルトフォントサイズ */
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial Nova Condensed', sans-serif;
+  background-color: black;
+  color: white;
+  font-size: var(--body-font-size); /* フォントサイズを変数で指定 */
+}
+
+/* ヘッダーのスタイル */
+header {
+  background-color: black;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center; /* 中央揃えに変更 */
+  align-items: center;
+  position: relative; /* 追加 */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+header .menu-icon {
+  display: none; /* デフォルトで非表示 */
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px; /* メニューアイコンの右側に余白を追加 */
+}
+
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; /* 文字を左揃え */
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+/* メインコンテンツのスタイル */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px 0;
+  font-size: var(--top-section-font-size); /* topセクションのフォントサイズを変数で指定 */
+}
+
+.middle-section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px 0;
+  font-size: var(--middle-section-font-size); /* middleセクションのフォントサイズを変数で指定 */
+}
+
+.text-section {
+  text-align: center;
+  padding: 20px;
+  font-size: var(--text-section-font-size); /* textセクションのフォントサイズを変数で指定 */
+}
+
+.box {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.box.mission {
+  background-image: url('./assets/images/logo.png');
+}
+
+.box.value {
+  background-image: url('./assets/images/logo.png');
+}
+
+.box.vision {
+  background-image: url('./assets/images/logo.png');
+}
+
+.box h2 {
+  margin: 0 0 10px;
+}
+
+.logo-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo-section img {
+  max-height: 200px;
+}
+
+.bottom-section {
+  text-align: left;
+  padding: 20px;
+  width: 100%; /* セクションを幅いっぱいに広げる */
+}
+
+.bottom-section {
+  background-color: black; /* 背景色を白に変更 */
+  color: white; /* 文字色を黒に変更 */
+  padding: 20px;
+  text-align: left;
+}
+
+.bottom-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bottom-section ul li {
+  margin-bottom: 5px; /* 文字の上下の間隔を5pxに設定 */
+}
+
+.bottom-section ul li a {
+  color: white; /* 文字色を黒に変更 */
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+/* フッターのスタイル */
+footer {
+  background-color: white; /* 背景色を白に変更 */
+  color: black; /* 文字色を黒に変更 */
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1em;
+  text-decoration: underline; /* 追加: すべてのテキストにアンダーライン */
+}
+
+footer p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.bottom-section .instagram-logo {
+  max-width: 50px; /* ロゴの幅を調整 */
+  height: auto; /* 高さは自動で調整 */
+}
+
+/* ハンバーガーメニューの初期状態 */
+header nav ul.nav-links {
+  display: flex;
+}
+
+header nav ul.nav-links.show {
+  display: block; /* メニューが開いたときに表示 */
+  position: absolute;
+  top: 60px; /* headerの高さに合わせる */
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px 0;
+}
+
+/* ハンバーガーメニューのアイコンがモバイルで表示 */
+@media (max-width: 768px) {
+  header nav ul.nav-links {
+    display: none; /* モバイルビューではデフォルトで非表示 */
+  }
+
+  header nav ul.nav-links.show {
+    display: block; /* メニューアイコンがクリックされたときに表示 */
+  }
+
+  header .menu-icon {
+    display: block; /* モバイルビューでメニューアイコンを表示 */
+  }
+
+  header nav ul {
+    display: block;
+    text-align: left;
+  }
+
+  header nav ul li {
+    margin: 10px 0;
+  }
+
+  .top-section, .middle-section {
+    flex-direction: column; /* ボックスを縦に並べる */
+    padding: 10px;
+  }
+
+  .box {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .box p {
+    font-size: 0.8em; /* h2以外の文字サイズを小さくする */
+  }
+
+  .logo-section img {
+    max-height: 150px;
+  }
+}

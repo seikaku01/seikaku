@@ -1,0 +1,184 @@
+body {
+    background-color: white;
+    color: black;
+}
+
+.shop-header {
+    background-color: black; /* ヘッダーを黒地に */
+    color: white; /* 文字を白に */
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between; /* ヘッダー内の要素を左右に配置 */
+    align-items: center;
+    position: relative; /* ハンバーガーメニューの位置を調整するため */
+}
+
+header .menu-icon {
+    display: none; /* デフォルトで非表示 */
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px; /* メニューアイコンの右側に余白を追加 */
+  }
+  
+.shop-nav {
+    display: flex;
+}
+
+.shop-nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.shop-nav ul li {
+    list-style: none;
+}
+
+.shop-nav ul li a {
+    text-decoration: none;
+    color: white; /* 文字色を白に */
+    font-size: 1.2em;
+}
+
+/* ハンバーガーメニューがクリックされた時にナビゲーションが表示されるように */
+.show-nav {
+    display: flex; /* display: block から flex に変更 */
+    flex-direction: column;
+    width: 100%;
+}
+
+.shop-header .logo img {
+    max-height: 50px;
+}
+
+.shop-top-section {
+    display: flex;
+    flex-wrap: wrap; /* スクリーンサイズに応じてアイテムを折り返す */
+    padding: 10px;
+    margin: 0 1px; /* 左右の画像を画面端に揃える */
+}
+
+.shop-item {
+    width: calc(25% - 2px); /* 横の間隔を1pxに */
+    margin: 1px;
+    text-align: left;
+}
+
+.shop-item img {
+    width: 100%;
+    height: auto;
+}
+
+.item-info {
+    font-size: 15px;
+    line-height: 1px; /* 文字の縦の間隔を1pxに設定 */
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* モバイルビューでは表示する */
+    }
+
+    .shop-nav {
+        display: none; /* デフォルトではナビゲーションメニューを非表示に */
+        position: absolute;
+        top: 60px; /* ヘッダーの下に位置させる */
+        right: 0;
+        background-color: black;
+        width: 100%;
+        text-align: center;
+        z-index: 1000; /* 他の要素の上に表示するために */
+    }
+
+    .shop-nav.show-nav {
+        display: flex; /* メニューを表示する */
+    }
+
+    .shop-nav ul {
+        display: block;
+        padding: 0;
+    }
+
+    .shop-nav ul li {
+        margin: 10px 0;
+    }
+
+    .shop-top-section {
+        flex-direction: column; /* モバイルビューでは縦に並べる */
+    }
+
+    .shop-item {
+        width: 100%; /* モバイルビューでは1列に並べる */
+    }
+}
+
+/* ハンバーガーメニューの初期状態 */
+header nav ul.nav-links {
+    display: flex;
+  }
+  
+  header nav ul.nav-links.show {
+    display: block; /* メニューが開いたときに表示 */
+    position: absolute;
+    top: 60px; /* headerの高さに合わせる */
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 10px 0;
+  }
+  
+  /* ハンバーガーメニューのアイコンがモバイルで表示 */
+  @media (max-width: 768px) {
+    header nav ul.nav-links {
+      display: none; /* モバイルビューではデフォルトで非表示 */
+    }
+  
+    header nav ul.nav-links.show {
+      display: block; /* メニューアイコンがクリックされたときに表示 */
+    }
+  
+    header .menu-icon {
+      display: block; /* モバイルビューで表示 */
+    }
+  }
+  .bottom-section .instagram-logo {
+    max-width: 50px; /* ロゴの幅を調整 */
+    height: auto; /* 高さは自動で調整 */
+  }
+  @media (max-width: 768px) {
+    header nav ul {
+      display: block;
+      text-align: left;
+    }
+  
+    header nav ul li {
+      display: block;
+      margin: 10px 0;
+    }
+  
+    .middle-section .box {
+      flex: 1 1 100%;
+      height: 50vh;
+      background-size: contain; /* モバイルビューでの画像サイズを調整 */
+    }
+  
+    header .menu-icon {
+      display: block; /* モバイルビューで表示 */
+    }
+  
+    header nav ul {
+      display: none; /* 初期状態では非表示 */
+    }
+  
+    header nav.active ul {
+      display: block; /* メニューアイコンがクリックされたときに表示 */
+    }
+  }
+  

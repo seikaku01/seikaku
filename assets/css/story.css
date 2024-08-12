@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+  font-family: 'Arial Nova Condensed', sans-serif;
+  background-color: black;
+  color: white;
+  font-size: var(--body-font-size); /* フォントサイズを変数で指定 */
+}
+
+header {
+  background-color: black;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center; /* 中央揃えに変更 */
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+header .menu-icon {
+  display: none; /* デフォルトで非表示 */
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px; /* メニューアイコンの右側に余白を追加 */
+}
+
+
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; /* 文字を左揃え */
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+header .logo {
+  text-align: center;
+  margin-top: 10px;
+}
+
+header .logo img {
+  max-height: 50px;
+}
+
+main {
+  padding: 20px;
+}
+
+.body-upper {
+  text-align: center;
+  padding: 20px;
+}
+
+.body-text {
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.special-text {
+  font-size: 40px; /* デフォルトサイズ */
+}
+
+.body-lower {
+  text-align: left;
+  padding: 20px;
+}
+
+.body-lower .links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.body-lower .links li {
+  display: block;
+}
+
+.body-lower .links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
+
+.body-lower .logo {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.body-lower .logo img {
+  max-height: 200px;
+}
+
+.additional-links {
+  padding: 20px;
+  background-color: black;
+  color: white;
+}
+
+.additional-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.additional-links ul li {
+  display: block;
+}
+
+.additional-links ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
+
+footer {
+  background-color: white; /* 背景色を白に変更 */
+  color: black; /* 文字色を黒に変更 */
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1em;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  .body-text {
+      font-size: 16px; /* モバイルビューでのサイズ変更 */
+  }
+
+  .special-text {
+      font-size: 30px; /* モバイルビューでのサイズ変更 */
+      line-height: 1.2; /* 行間を狭くすることで行数を減らす */
+  }
+}
+.links .instagram-logo {
+  max-width: 50px; /* ロゴの幅を調整 */
+  height: auto; /* 高さは自動で調整 */
+}
+/* ハンバーガーメニューの初期状態 */
+header nav ul.nav-links {
+  display: flex;
+}
+
+header nav ul.nav-links.show {
+  display: block; /* メニューが開いたときに表示 */
+  position: absolute;
+  top: 60px; /* headerの高さに合わせる */
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px 0;
+}
+
+/* ハンバーガーメニューのアイコンがモバイルで表示 */
+@media (max-width: 768px) {
+  header nav ul.nav-links {
+    display: none; /* モバイルビューではデフォルトで非表示 */
+  }
+
+  header nav ul.nav-links.show {
+    display: block; /* メニューアイコンがクリックされたときに表示 */
+  }
+
+  header .menu-icon {
+    display: block; /* モバイルビューで表示 */
+  }
+}
+.bottom-section .instagram-logo {
+  max-width: 50px; /* ロゴの幅を調整 */
+  height: auto; /* 高さは自動で調整 */
+}
+@media (max-width: 768px) {
+  header nav ul {
+    display: block;
+    text-align: left;
+  }
+
+  header nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .middle-section .box {
+    flex: 1 1 100%;
+    height: 50vh;
+    background-size: contain; /* モバイルビューでの画像サイズを調整 */
+  }
+
+  header .menu-icon {
+    display: block; /* モバイルビューで表示 */
+  }
+
+  header nav ul {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  header nav.active ul {
+    display: block; /* メニューアイコンがクリックされたときに表示 */
+  }
+}
