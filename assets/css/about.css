@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Arial+Nova+Condensed&display=swap');
+
+:root {
+  --body-font-size: 1em;
+  --top-section-font-size: 1.4em;
+  --middle-section-font-size: 1.4em;
+  --text-section-font-size: 1.4em;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial Nova Condensed', sans-serif;
+  background-color: black;
+  color: white;
+  font-size: var(--body-font-size);
+}
+
+/* ヘッダーのスタイル */
+header {
+  background-color: black;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+header .menu-icon {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+/* メインコンテンツのスタイル */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.top-section, .middle-section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px 0;
+  font-size: var(--top-section-font-size);
+}
+
+.text-section {
+  text-align: center;
+  padding: 20px;
+  font-size: var(--text-section-font-size);
+}
+
+.box {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.box.mission {
+  background-image: url('./assets/images/logo.png');
+}
+
+.box.value {
+  background-image: url('./assets/images/logo.png');
+}
+
+.box.vision {
+  background-image: url('./assets/images/logo.png');
+}
+
+.box h2 {
+  margin: 0 0 10px;
+}
+
+.logo-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo-section img {
+  max-height: 200px;
+}
+
+.bottom-section {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.bottom-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bottom-section ul li {
+  margin-bottom: 5px;
+}
+
+.bottom-section ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.bottom-section .instagram-logo {
+  max-width: 50px;
+  height: auto;
+}
+
+/* フッターのスタイル */
+footer {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ハンバーガーメニュー */
+header nav ul.nav-links {
+  display: flex;
+}
+
+header nav ul.nav-links.show {
+  display: block;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  header nav ul.nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  header .menu-icon {
+    display: block;
+  }
+
+  header nav ul.nav-links.show {
+    display: block;
+  }
+
+  .top-section, .middle-section {
+    flex-direction: column;
+    font-size: 1.2em;
+  }
+
+  .box {
+    margin: 10px 0;
+  }
+}
+.instagram-section {
+    text-align: center; /* 中央揃え */
+    margin: 60px 0; /* 上下に20pxの間隔を追加 */
+    font-size: 1.2em; /* 文字のサイズを変更可能に */
+  }
+  
+  .instagram-section p {
+    margin-bottom: 30px; /* テキストと画像の間に10pxの間隔を追加 */
+  }
+  
+  .instagram-logo {
+    width: 50px; /* Instagramロゴのサイズを調整 */
+    height: auto; /* アスペクト比を保ったまま高さを自動調整 */
+  }
+  .bottom-section .X-logo {
+    max-width: 50px; /* ロゴの幅を調整 */
+    height: auto; /* 高さを自動調整 */
+  }
+  
+  .instagram-section {
+    text-align: center; /* 中央揃え */
+    margin: 60px 0; /* 上下に60pxのマージンを追加 */
+    font-size: 1.2em; /* テキストサイズを設定 */
+  }
+  
+  .instagram-section p {
+    margin-bottom: 30px; /* テキストと画像の間に30pxのスペースを追加 */
+  }
+  
+  .X-logo {
+    width: 50px; /* ロゴの幅を50pxに設定 */
+    height: auto; /* 高さは自動調整 */
+    margin-top: 50px;
+    margin: 0px; /* ロゴの周りにマージンを追加 */
+    margin-left: 10px;
+  }
+  a {
+    text-decoration: none; /* アンダーバーを削除 */
+  }
+  
+  img {
+    border: none; /* 画像に余計なボーダーをつけない */
+  }
+  
