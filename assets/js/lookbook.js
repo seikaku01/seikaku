@@ -11,8 +11,8 @@ const imagesSet1 = [
     'assets/images/lookbook/26.png',
     'assets/images/lookbook/27.png',
     'assets/images/lookbook/28.png',
-    'assets/images/lookbook/29.png',
-    'assets/images/lookbook/30.png',
+    'assets/images/lookbook/改訂版.png',
+    'assets/images/lookbook/会社概要ページ.png',
     'assets/images/lookbook/32.png'
 ];
 
