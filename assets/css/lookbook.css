@@ -295,3 +295,9 @@ footer p {
     max-width: 50px; /* ロゴの幅を調整 */
     height: auto; /* 高さは自動で調整 */
   }
+  .thumbnail p {
+    text-align: center; /* テキストを中央揃え */
+    margin-top: 20px; /* 画像との間隔を設定 */
+    color: white; /* テキストの色を白に設定 */
+    font-size: 1.2em; /* フォントサイズを設定 */
+}
