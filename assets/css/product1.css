@@ -77,6 +77,7 @@ header nav ul li a {
     top: 0;
     height: calc(100vh - 150px);
     overflow-y: auto;
+    line-height: 0.9; /* 行間を詰めるための値 */
 }
 
 .product-right h1 {
