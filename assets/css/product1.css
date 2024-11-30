@@ -93,14 +93,30 @@ header nav ul li a {
 }
 
 .coming-soon-box {
-    background-color: black;
-    color: white;
-    padding: 2px 30px;
-    border: 2px solid black;
-    text-align: center;
-    font-size: 1em;
-    width: 300px;
+  background-color: black;
+  color: white;
+  padding: 1px 60px;
+  border: 2px solid black;
+  text-align: center;
+  font-size: 1em;
+  width: 300px;
 }
+.coming-soon-box a {
+  white-space: normal; /* テキストを折り返す */
+  word-wrap: break-word;
+  font-size: 14px; /* 必要に応じて調整 */
+  color: white; /* 元のスタイルを維持 */
+  text-decoration: none; /* アンダーラインを除去 */
+  display: block; /* ブロック要素に変更 */
+}
+.coming-soon-box a {
+  white-space: nowrap; /* テキストを1行に収める */
+  display: inline-block; /* 必要に応じて調整 */
+  text-align: center; /* 中央揃え */
+  box-sizing: border-box; /* パディングを幅に含める */
+  overflow: hidden; /* ボックスからはみ出さないようにする */
+}
+
 
 .product-description {
     text-align: left;
