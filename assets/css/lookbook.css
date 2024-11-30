@@ -80,6 +80,12 @@ header nav ul li a {
     transform: scale(1.05);
 }
 
+.thumbnail p {
+  line-height: 0.2; /* 行間を調整 */
+  margin: 0; /* 必要に応じて上下の余白を削除 */
+}
+
+
 /* モーダルのスタイル */
 .lookbook-modal {
     display: none; /* 初期状態で非表示 */
