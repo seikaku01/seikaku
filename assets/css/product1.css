@@ -351,3 +351,24 @@ header .menu-icon {
     }
   }
   
+
+.coming-soon-box {
+  background-color: black;
+  color: white;
+  padding: 20px 20px; /* 上下に余白を追加 */
+  text-align: center; /* テキストを中央揃え */
+  font-size: 0.9em;
+  width: 300px; /* ボックスの幅を固定 */
+  margin: 0 auto; /* ボックス自体を中央に配置 */
+  display: flex; /* Flexboxを使って中央揃え */
+  justify-content: center; /* 横方向に中央揃え */
+  align-items: center; /* 縦方向に中央揃え */
+  border: 2px solid black; /* ボックスの枠線 */
+}
+
+.coming-soon-box a {
+  color: white;
+  text-decoration: none; /* アンダーラインを削除 */
+  font-size: 1.2em; /* リンクテキストのサイズ */
+  display: inline-block; /* ボックス内のインライン要素として表示 */
+}
