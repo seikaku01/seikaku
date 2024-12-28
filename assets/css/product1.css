@@ -116,6 +116,35 @@ header nav ul li a {
   box-sizing: border-box; /* パディングを幅に含める */
   overflow: hidden; /* ボックスからはみ出さないようにする */
 }
+.paypal-button-container {
+  display: flex;
+  flex-direction: column; /* 縦方向に配置 */
+  align-items: center; /* 中央揃え */
+  justify-content: center; /* 縦方向の中央揃え */
+  padding: 20px; /* ボックス全体の余白 */
+  background-color: #000; /* 背景色を黒 */
+  color: white; /* テキストを白 */
+  border-radius: 10px; /* 角を丸くする */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 軽い影をつける */
+  gap: 15px; /* 各要素間の間隔 */
+}
+
+.paypal-button-container h2 {
+  font-size: 1.5em; /* タイトルのフォントサイズ */
+  margin: 0;
+  text-align: center;
+}
+
+.paypal-button-container p {
+  font-size: 1.2em; /* 価格のフォントサイズ */
+  margin: 0;
+}
+
+#paypal-button-container {
+  width: 100%; /* ボタンを全幅に */
+  display: flex;
+  justify-content: center;
+}
 
 
 .product-description {
@@ -371,4 +400,16 @@ header .menu-icon {
   text-decoration: none; /* アンダーラインを削除 */
   font-size: 1.2em; /* リンクテキストのサイズ */
   display: inline-block; /* ボックス内のインライン要素として表示 */
+}
+.paypal-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .paypal-button-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
