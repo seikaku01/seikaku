@@ -38,9 +38,16 @@
                 <p>和服型ナイトウェア</p>
                 <p>Free size</p>
                 <div class="coming-soon-box">
-                    <a href="https://docs.google.com/forms/d/1u0nKufLAf9-eqPr11TQdQN7VfpB2ivle4EPInJmBTEc/edit" target="_blank" rel="noopener noreferrer" style="color: white;">
+                                                    <!--
+                    <a href="https://www.makuake.com/project/seikaku/" target="_blank" rel="noopener noreferrer" style="color: white;">
                         先行予約フォーム
                     </a>
+                                -->
+
+                <div class="paypal-button-container">
+                    <h2>購入はこちら</h2>
+                    <p>価格: ¥16,500 (税込)</p>
+                    <div id="paypal-button-container"></div>
                 </div>
                 <div class="product-description">
                     <h2>Description</h2>
@@ -128,5 +135,23 @@
         <p>&copy; 2024 Your Company. All rights reserved.</p>
     </footer>
     <script src="assets/js/product.js"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '16500' // 商品価格 (税込み)
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name + '!');
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
 </body>
 </html>
