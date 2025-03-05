@@ -323,3 +323,49 @@ a {
 img {
   border: none; /* 画像に余計なボーダーをつけない */
 }
+.information-section {
+  text-align: center;
+  background-color: #000000;
+  padding: 20px;
+}
+
+.information-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-date {
+  color: #777;
+  font-size: 0.9em;
+}
+
+.info-title {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.info-item.hidden {
+  display: none;
+}
+
+#moreInfoBtn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: white;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#moreInfoBtn:hover {
+  background-color: white;
+}
