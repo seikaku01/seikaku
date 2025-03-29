@@ -1,5 +1,5 @@
-let productPrice = 16500;  // クーポン適用前の製品単価
-let discountedPrice = 15000;  // クーポン適用後の価格（クーポンを使用した場合でもこの価格は変わらない）
+let productPrice = 16500;  // 初期製品単価（クーポン適用前）
+let discountedPrice = 15000;  // クーポン適用後の価格
 let shippingFee = 0;  // 送料
 let finalPrice = productPrice;  // 最終金額（初期は製品単価）
 
@@ -28,7 +28,7 @@ function updateShippingFee() {
     }
 
     // 最終的な価格を再計算
-    finalPrice = discountedPrice + shippingFee;
+    finalPrice = (discountedPrice || productPrice) + shippingFee;  // クーポン適用後または適用前の製品金額
     shippingFeeElement.textContent = `送料: ¥${shippingFee}`;
     priceElement.textContent = finalPrice.toLocaleString();
     priceTextElement.textContent = `価格: ¥${finalPrice.toLocaleString()} (税込)`;
