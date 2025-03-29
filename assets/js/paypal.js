@@ -33,9 +33,6 @@ function updateShippingFee() {
     priceElement.textContent = finalPrice.toLocaleString();
     priceTextElement.textContent = `価格: ¥${finalPrice.toLocaleString()} (税込)`;
 
-    // PayPal金額を更新
-    updatePaypalAmount(finalPrice);
-
     // 配送エリアが選ばれたら決済ボタンを表示
     paypalButtonContainer.style.display = 'block';
 }
