@@ -9,6 +9,7 @@ function updateShippingFee() {
     const priceElement = document.getElementById('price');
     const priceTextElement = document.getElementById('price-text');
     const shippingFeeElement = document.getElementById('shipping-fee');
+    const paypalButtonContainer = document.getElementById('paypal-button-container'); // ペイパルボタンコンテナ
 
     // 配送エリアごとの送料を設定
     if (shippingInfo === "東北") {
@@ -18,6 +19,7 @@ function updateShippingFee() {
     } else if (shippingInfo === "沖縄" || shippingInfo === "海外") {
         shippingFeeElement.textContent = "配送はできません。";
         priceTextElement.textContent = "購入手続きに進むことはできません。";
+        paypalButtonContainer.style.display = 'none'; // 沖縄や海外の場合、決済ボタン非表示
         return;
     } else if (shippingInfo === "その他") {
         shippingFee = 550;
@@ -31,7 +33,11 @@ function updateShippingFee() {
     priceElement.textContent = finalPrice.toLocaleString();
     priceTextElement.textContent = `価格: ¥${finalPrice.toLocaleString()} (税込)`;
 
-    updatePaypalAmount(finalPrice); // PayPal金額を更新
+    // PayPal金額を更新
+    updatePaypalAmount(finalPrice);
+
+    // 配送エリアが選ばれたら決済ボタンを表示
+    paypalButtonContainer.style.display = 'block';
 }
 
 // クーポン適用後に金額を更新する
@@ -58,7 +64,8 @@ function applyCoupon() {
     priceElement.textContent = finalPrice.toLocaleString();
     priceTextElement.textContent = `価格: ¥${finalPrice.toLocaleString()} (税込)`;
 
-    updatePaypalAmount(finalPrice); // PayPal金額を更新
+    // PayPal金額を更新
+    updatePaypalAmount(finalPrice);
 }
 
 // PayPalの金額を更新する
