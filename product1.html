@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SEIKAKU LLCの製品”Yoru”について詳しく書いています。"> 
+    <meta name="description" content="SEIKAKU LLCの製品”Yoru”について詳しく書いています。">
     <title>Product 1</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/shop.css">
     <link rel="stylesheet" href="assets/css/product1.css">
-　　 <script src="https://www.paypal.com/sdk/js?client-id=AaHyjM3_cPjiR0OIWKA_fnT7xAx-1GEkMaq9xynW_bPSwMlz3TjMKNmfn1uMnN8kvRVbdv9JRocFRsrZ&currency=JPY"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYPby53GhCePMotBhgDUCQoJCC1YqfIrafqCXxBlVQQfo6u4VN0bA3lgySr77e6kFbgl3ZjXnxg-MYBx&currency=JPY"></script>
 </head>
 <body>
     <header class="shop-header">
@@ -24,136 +24,114 @@
                 </ul>
             </nav>
         </div>
-    </header>    
+    </header>
+    
     <main>
         <div class="product-container">
             <div class="product-left">
                 <img src="assets/images/product 上着1.jpg" alt="Product Image 1">
                 <img src="assets/images/product 上着2.jpg" alt="Product Image 2">
                 <img src="assets/images/product 上着3.jpg" alt="Product Image 3">
-                <img src="assets/images/product1.jpg" alt="Product Image 4">
-                <img src="assets/images/product2.jpg" alt="Product Image 5">
-                <img src="assets/images/product3.jpg" alt="Product Image 6">
+                <img src="assets/images/product パンツ1.jpg" alt="Product Image 4">
+                <img src="assets/images/product パンツ2.jpg" alt="Product Image 5">
+                <img src="assets/images/product パンツ3.jpg" alt="Product Image 6">
             </div>
             <div class="product-right">
                 <p>和服型ナイトウェア</p>
                 <p>Free size</p>
-                <div class="coming-soon-box">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfIu7hkf-LHwqJUQGy21Dv3xn9HrAS1lmAZyJPS7CpJwKkyyQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" style="color: white;">
-                        先行予約フォーム
-                    </a>
-                 <!--          
-                <div class="paypal-button-container">
-                    <h2>購入はこちら</h2>
-                    <p>価格: ¥16,500 (税込)</p>
-                    <div id="paypal-button-container"></div>
-                </div>
-                          -->   
 
-            　　 </div>   
+                <!-- 最初は決済ボタンを非表示 -->
+                <div class="paypal-button-container" id="paypal-button-container" style="display:none;"></div>
+
+                <!-- クーポンコード入力フォーム -->
+                <div class="coupon-section">
+                    <input type="text" id="coupon-code" placeholder="クーポンコードを入力" onkeydown="checkEnter(event)">
+                    <button onclick="applyCoupon()">適用</button>
+                    <p id="coupon-message"></p>
+                </div>
+
+                <p>価格: <span id="price">16,500</span>円</p>
+
+                <!-- 配送先情報フォーム -->
+                <label for="shipping-info">配送先:</label>
+                <select id="shipping-info" onchange="updateShippingFee(); renderPaypalButton();">
+                    <option value="">配送エリアを選択</option>
+                    <option value="東北">東北（宮城県、山形県、福島県、青森県、秋田県、岩手県）</option>
+                    <option value="北海道">北海道</option>
+                    <option value="沖縄">沖縄</option>
+                    <option value="海外">海外</option>
+                    <option value="その他">その他</option>
+                </select>
+                <!-- 送料表示 -->
+                <p id="shipping-fee">送料: ¥0</p>
+                <p id="price-text">価格: ¥16,500 (税込)</p>
+
+                <!-- エラーメッセージ -->
+                <p id="shipping-error" style="color: red; font-weight: bold;"></p>
                 <div class="product-description">
                     <h2>Description</h2>
                     <p>日本の4つの伝統衣装である、“羽織・腹巻・甚平・作務衣”から着想を得た</p>
                     <p>新しいスタイルのナイトウェア兼ルームウェアです。</p>
-                    <p> 　　　　</p>
                     <h2>特徴</h2>
                     <p>【腹巻付きパンツ】</p>
                     <p>・従来の腹巻単体での着脱の煩わしさを解消</p>
                     <p>・吸汗性が優れた生地で寝汗からくる冷えへの対策</p>
-                    <p> 　　　　</p>
                     <p>【羽織式ポケット】</p>
                     <p>・収納便利な羽織式ポケットを搭載</p>
-                    <p>　ちょっとしたお出かけも、手ぶらでできる実用性</p>
-                    <p> 　　　　</p>
                     <p>【洗濯ができる和服】</p>
                     <p>・乾きやすい生地で毎日の洗濯にも対応</p>
-                    <p>・オールシーズン着用が可能な生地を採用</p>
-                    <p> 　　　　</p>
                     <p>【フリーサイズ】</p>
                     <p>・上着に三段階のサイズ調整ができるアタッチメント付</p>
-                    <p>・ウエスト・裾丈・裾幅の調整が可能</p>
-                    <p> 　　　　</p>
                     <p>【“寝巻き×手帳”モチベーションウェア】</p>
                     <p>・自社制作アプリ（To-Do List）で自己管理</p>
                     <p>・上着に付属のQRコードを読み取り連携</p>
-                    <p> 　　　　</p>
                     <h2>商品の詳細</h2>
                     <p>・カラー：濃紺</p>
                     <p>・身生地（上下）：ポリエステル 100%</p>                
                     <p>・腹巻生地　　　：ポリエステル 87%</p>
-                    <p>　　　　　　　　　レーヨンポリウレタン 13%</p>
-                    <p>※生地の特徴</p>
-                    <p>通気性・速乾性・吸水性・接触冷感</p>
-                    <p>※色褪せ/色移り（洗濯・日焼け・摩擦など問題なし）</p>
-                    <p>※洗濯機洗い可能</p>
-                    <p>※低アイロンOK</p>
                     <p>・製造国：中国</p>
-                    <p> 　　　　</p>
                     <h2>サイズ</h2>
                     <p>・フリーサイズ</p>
                     <p>・ウエスト 70cm - 110cm</p>
-                    <p>※当社調べにより、記載のウエストサイズは腹巻の効能を</p>
-                    <p>　実感いただきやすいサイズ感となります。</p>
-                    <p>※ただし、骨格・体型に応じて効能の実感は異なります。</p>
-                    <p> 　　　　</p>
-                    <p>上着</p>
-                    <div class="product-images">
-                        <img src="assets/images/product1 写真２.png" alt="Product Image 1" class="centered-image">
-                        <img src="assets/images/上着 寸法.png" alt="Product Image 1" class="dimension-image">
-                    </div>
-                    <P>パンツ</P>
-                    <div class="product-images">
-                        <img src="assets/images/product1 写真.png" alt="Product Image 2" class="centered-image">
-                        <img src="assets/images/pantsize.png" alt="Product Image 2" class="dimension-image">
-                    </div>
+                </div>
 
+                <!-- 商品画像セクション -->
+                <div class="product-images">
+                    <img src="assets/images/product1 写真２.png" alt="Product Image 1" class="centered-image">
+                    <img src="assets/images/上着 寸法.png" alt="Product Image 1" class="dimension-image">
+                </div>
+                <p>パンツ</p>
+                <div class="product-images">
+                    <img src="assets/images/product1 写真.png" alt="Product Image 2" class="centered-image">
+                    <img src="assets/images/ズボン 寸法.png" alt="Product Image 2" class="dimension-image">
                 </div>
             </div>
         </div>
 
-            <!-- Instagramセクション -->
-    <div class="instagram-section">
-        <p>Social media </p>
-        <a href="https://www.instagram.com/seikaku_jp?igsh=bDV6Y3NwajB4amxn&utm_source=qr" target="_blank">
-            <img src="./assets/images/instagram black.png" alt="Instagram Logo" class="instagram-logo">
-         </a>
-         <a href="https://x.com/SEIKAKU_JP" target="_blank">
-            <img src="./assets/images/X logo white.png" alt="X Logo" class="X-logo">
-         </a>
-    </div>
-        
+        <!-- Instagramセクション -->
+        <div class="instagram-section">
+            <p>Social media </p>
+            <a href="https://www.instagram.com/seikaku_jp?igsh=bDV6Y3NwajB4amxn&utm_source=qr" target="_blank">
+                <img src="./assets/images/instagram black.png" alt="Instagram Logo" class="instagram-logo">
+            </a>
+            <a href="https://x.com/SEIKAKU_JP" target="_blank">
+                <img src="./assets/images/X logo white.png" alt="X Logo" class="X-logo">
+            </a>
+        </div>
+
         <div class="bottom-section">
             <ul>
-            <!--
-            <li><a href="accessibility.html">Accessibility</a></li>
-        -->
                 <li><a href="terms.html">Terms & Conditions</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </div>
     </main>
-    
+
     <footer>
         <p>&copy; 2024 Your Company. All rights reserved.</p>
     </footer>
+
     <script src="assets/js/product.js"></script>
-    <script>
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '16500' // 商品価格 (税込み)
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name + '!');
-                });
-            }
-        }).render('#paypal-button-container');
-    </script>
+    <script src="assets/js/paypal.js"></script>
 </body>
 </html>
