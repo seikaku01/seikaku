@@ -9,6 +9,7 @@ function updateShippingFee() {
     const shippingFeeElement = document.getElementById('shipping-fee');
     const totalPriceElement = document.getElementById('total-price');
     const inquiryElement = document.getElementById('inquiry-message');
+    const paypalButtonContainer = document.getElementById('paypal-button-container');
 
     // 配送先によって送料を設定
     if (shippingInfo === "東北") {
@@ -21,6 +22,7 @@ function updateShippingFee() {
         shippingFeeElement.textContent = "配送はできません。";
         totalPriceElement.textContent = "購入手続きに進むことはできません。";
         inquiryElement.style.display = "block"; // お問い合わせフォームを表示
+        paypalButtonContainer.style.display = "none"; // ペイパルボタンを非表示
         return;  // 沖縄や海外の場合は処理終了
     } else {
         shippingFee = 0; // 配送先が選ばれていない場合、送料はゼロ
@@ -34,6 +36,7 @@ function updateShippingFee() {
     totalPriceElement.textContent = `¥${finalPrice}`;
 
     updatePaypalAmount(finalPrice); // PayPal金額を更新
+    paypalButtonContainer.style.display = "block"; // 配送先が選ばれていればペイパルボタンを表示
 }
 
 function applyCoupon() {
