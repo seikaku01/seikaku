@@ -9,6 +9,7 @@ function updateShippingFee() {
     const priceTextElement = document.getElementById('price-text');
     const shippingFeeElement = document.getElementById('shipping-fee');
     const inquiryElement = document.getElementById('inquiry-message');
+    const paypalButtonContainer = document.getElementById('paypal-button-container'); // PayPalボタンコンテナ
 
     // 配送先によって金額をベタ打ちで設定
     if (shippingInfo === "東北") {
@@ -21,6 +22,7 @@ function updateShippingFee() {
         shippingFeeElement.textContent = "配送はできません。";
         priceTextElement.textContent = "購入手続きに進むことはできません。";
         inquiryElement.style.display = "block"; // お問い合わせフォームを表示
+        paypalButtonContainer.style.display = "none"; // PayPalボタンを非表示
         return;  // 沖縄や海外の場合は決済不可
     } else {
         finalPrice = 16500;  // 送料が選択されていない場合、基本価格
@@ -36,6 +38,8 @@ function updateShippingFee() {
     // 送料表示（送料は配送先に応じて異なる）
     shippingFeeElement.textContent = `送料: ¥${finalPrice - 16500}`;
 
+    // PayPalボタンを表示
+    paypalButtonContainer.style.display = "block"; // PayPalボタンを表示
     updatePaypalAmount(finalPrice); // PayPal金額を更新
 }
 
