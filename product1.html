@@ -40,20 +40,12 @@
                 <p>和服型ナイトウェア</p>
                 <p>Free size</p>
 
-                <!-- 最初は決済ボタンを非表示 -->
-                <div class="paypal-button-container" id="paypal-button-container" style="display:none;"></div>
+                <!-- 小売価格を固定表示 -->
+                <p>小売価格: <span id="retail-price">16,500</span>円</p>
 
-                <!-- クーポンコード入力フォーム -->
-                <div class="coupon-section">
-                    <input type="text" id="coupon-code" placeholder="クーポンコードを入力" onkeydown="checkEnter(event)">
-                    <button onclick="applyCoupon()">適用</button>
-                    <p id="coupon-message"></p>
-                </div>
-                <p id="inquiry-message" style="display: none; color: red;">
-                    お問い合わせフォームをご利用ください: <a href="https://docs.google.com/forms/d/1VQV09aAstmCxjR7aLlYc8M_Ea5KYn0tc9U9eQxD2JNc/edit" target="_blank">こちら</a>
-                </p>
-
-                <p>価格: <span id="price">16,500</span>円</p>
+                <!-- 送料と合計金額表示 -->
+                <p>送料: <span id="shipping-fee">¥0</span></p>
+                <p>価格: <span id="total-price">¥16,500</span>円</p>
 
                 <!-- 配送先情報フォーム -->
                 <label for="shipping-info">配送先:</label>
@@ -65,9 +57,13 @@
                     <option value="海外">海外</option>
                     <option value="その他">その他</option>
                 </select>
-                <!-- 送料表示 -->
-                <p id="shipping-fee">送料: ¥0</p>
-                <p id="price-text">価格: ¥16,500 (税込)</p>
+
+                <!-- クーポンコード入力フォーム -->
+                <div class="coupon-section">
+                    <input type="text" id="coupon-code" placeholder="クーポンコードを入力" onkeydown="checkEnter(event)">
+                    <button onclick="applyCoupon()">適用</button>
+                    <p id="coupon-message"></p>
+                </div>
 
                 <!-- エラーメッセージ -->
                 <p id="shipping-error" style="color: red; font-weight: bold;"></p>
