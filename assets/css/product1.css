@@ -263,3 +263,35 @@
       margin: 10px 0;
     }
   }
+/* 和服型ナイトウェアのスタイル */
+.product-title {
+  font-size: 2em;  /* 大きめの文字サイズ */
+  font-weight: bold;
+  text-align: center; /* 中央揃え */
+  width: 100%;  /* 横幅を調整 */
+  margin-bottom: 0; /* 行間を詰める */
+}
+
+/* フリーサイズのスタイル */
+.product-size {
+  font-size: 1.5em;  /* 文字のサイズを調整 */
+  text-align: center; /* 中央揃え */
+  margin-top: -10px;  /* 上の余白を削除 */
+  margin-bottom: 0;  /* 下の余白を削除 */
+}
+/* 和服型ナイトウェアのスタイル */
+.product-title {
+  font-size: 2em;  /* 大きめの文字サイズ */
+  font-weight: bold;
+  text-align: center; /* 中央揃え */
+  width: 100%;  /* 横幅を調整 */
+  margin-bottom: 0; /* 行間を詰める */
+}
+
+/* フリーサイズのスタイル */
+.product-size {
+  font-size: 1.5em;  /* 文字のサイズを調整 */
+  text-align: center; /* 中央揃え */
+  margin-top: -10px;  /* 上の余白を削除 */
+  margin-bottom: 0;  /* 下の余白を削除 */
+}
