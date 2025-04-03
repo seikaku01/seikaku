@@ -1,56 +1,64 @@
-let productPrice = 16500; // 製品単価（16,500円）
-let shippingFee = 0; // 初期送料
-let finalPrice = productPrice; // 初期合計金額
+let finalPrice = 16500; // 製品単価（初期は16500円）
+let discountAmount = 0; // 割引額（初期は0）
+let shippingFee = 0; // 送料（初期は0）
 
-let discountAmount = 0; // 割引額（クーポン）
-
+// 配送先による送料の設定
 function updateShippingFee() {
     const shippingInfo = document.getElementById('shipping-info').value;
+    const priceElement = document.getElementById('total-price');
     const shippingFeeElement = document.getElementById('shipping-fee');
-    const totalPriceElement = document.getElementById('total-price');
-    const inquiryElement = document.getElementById('inquiry-message');
+    const priceTextElement = document.getElementById('price-text');
     const paypalButtonContainer = document.getElementById('paypal-button-container');
-
-    // 配送先によって送料を設定
+    const inquiryMessage = document.getElementById('inquiry-message');
+    
+    // 配送先によって金額を設定
     if (shippingInfo === "東北") {
-        shippingFee = 650; // 東北の場合
+        shippingFee = 650;
+        finalPrice = 16500 + shippingFee;
     } else if (shippingInfo === "北海道") {
-        shippingFee = 700; // 北海道の場合
+        shippingFee = 700;
+        finalPrice = 16500 + shippingFee;
     } else if (shippingInfo === "その他") {
-        shippingFee = 550; // その他の場合
+        shippingFee = 550;
+        finalPrice = 16500 + shippingFee;
     } else if (shippingInfo === "沖縄" || shippingInfo === "海外") {
         shippingFeeElement.textContent = "配送はできません。";
-        totalPriceElement.textContent = "購入手続きに進むことはできません。";
-        inquiryElement.style.display = "block"; // お問い合わせフォームを表示
-        paypalButtonContainer.style.display = "none"; // ペイパルボタンを非表示
-        return;  // 沖縄や海外の場合は処理終了
+        inquiryMessage.style.display = "block"; // お問い合わせフォームを表示
+        paypalButtonContainer.style.display = "none"; // PayPalボタンを非表示
+        return;  // 配送不可の場合は何も処理しない
     } else {
-        shippingFee = 0; // 配送先が選ばれていない場合、送料はゼロ
+        shippingFee = 0;  // 配送先が選ばれていない場合、送料を0にする
+        finalPrice = 16500;
     }
 
-    // クーポンが適用されている場合、1,500円割引
-    finalPrice = productPrice + shippingFee - discountAmount;
+    // クーポンが適用されている場合、1500円割引
+    finalPrice -= discountAmount;
 
-    // 送料と合計金額を表示
-    shippingFeeElement.textContent = `¥${shippingFee}`;
-    totalPriceElement.textContent = `¥${finalPrice}`;
+    // 最終金額を更新
+    priceElement.textContent = finalPrice.toLocaleString();
+    priceTextElement.textContent = `価格: ¥${finalPrice.toLocaleString()} (税込)`;
+    shippingFeeElement.textContent = `送料: ¥${shippingFee}`;
+
+    // PayPalボタンを表示
+    if (shippingInfo !== "沖縄" && shippingInfo !== "海外") {
+        paypalButtonContainer.style.display = "block"; // 配送先が選択された後に決済ボタンを表示
+    }
 
     updatePaypalAmount(finalPrice); // PayPal金額を更新
-    paypalButtonContainer.style.display = "block"; // 配送先が選ばれていればペイパルボタンを表示
 }
 
+// クーポンコードの処理
 function applyCoupon() {
-    const correctCoupon = "DISCOUNT1500"; // 正しいクーポンコード
+    const correctCoupon = "DISCOUNT1500"; // クーポンコード
     const inputCode = document.getElementById("coupon-code").value;
     const messageElement = document.getElementById("coupon-message");
 
-    // クーポンが正しい場合、割引額を設定
     if (inputCode === correctCoupon) {
-        discountAmount = 1500;  // クーポン適用後の割引額
+        discountAmount = 1500; // クーポン適用
         messageElement.textContent = "クーポンが適用されました！";
-        messageElement.style.color = "green";  // クーポンコードが正しい場合
+        messageElement.style.color = "green";  // クーポンが正しい場合
     } else {
-        discountAmount = 0;  // クーポンが無効なら割引額はゼロ
+        discountAmount = 0;  // クーポンが無効の場合
         messageElement.textContent = "クーポンコードが誤っています";
         messageElement.style.color = "red"; // クーポンコードが誤っている場合
     }
@@ -59,10 +67,11 @@ function applyCoupon() {
     updateShippingFee();
 }
 
+// PayPalの金額を更新する
 function updatePaypalAmount(newAmount) {
     const existingButton = document.getElementById('paypal-button-container');
     if (existingButton) {
-        existingButton.innerHTML = '';  // すでに表示されているボタンを削除
+        existingButton.innerHTML = ''; // 既存のボタンを削除
     }
 
     // 1回だけペイパルボタンを初期化して表示
@@ -71,15 +80,15 @@ function updatePaypalAmount(newAmount) {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: newAmount.toString() // 新しい金額に変更
+                        value: newAmount.toString() // 新しい金額を設定
                     }
                 }]
             });
         },
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name + '!');
+                alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name);
             });
         }
-    }).render('#paypal-button-container'); // ペイパルボタンを1回だけ表示
+    }).render('#paypal-button-container'); // PayPalボタンを1回だけ表示
 }
