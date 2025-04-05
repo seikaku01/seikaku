@@ -12,7 +12,10 @@ function updateShippingFee() {
     const inquiryMessage = document.getElementById('inquiry-message');
     
     // 配送先によって金額を設定
-    if (shippingInfo === "東北") {
+    if (shippingInfo === "本州四国九州") {
+        shippingFee = 500; // 本州・四国・九州の場合の送料
+        finalPrice = 16500 + shippingFee;
+    } else if (shippingInfo === "東北") {
         shippingFee = 650;
         finalPrice = 16500 + shippingFee;
     } else if (shippingInfo === "北海道") {
@@ -21,7 +24,7 @@ function updateShippingFee() {
     } else if (shippingInfo === "その他") {
         shippingFee = 550;
         finalPrice = 16500 + shippingFee;
-    } else if (shippingInfo === "沖縄" || shippingInfo === "海外") {
+    } else if (shippingInfo === "沖縄" || shippingInfo === "離島" || shippingInfo === "海外") {
         shippingFeeElement.textContent = "配送はできません。";
         inquiryMessage.style.display = "block"; // お問い合わせフォームを表示
         paypalButtonContainer.style.display = "none"; // PayPalボタンを非表示
@@ -40,7 +43,7 @@ function updateShippingFee() {
     shippingFeeElement.textContent = `送料: ¥${shippingFee}`;
 
     // PayPalボタンを表示
-    if (shippingInfo !== "沖縄" && shippingInfo !== "海外") {
+    if (shippingInfo !== "沖縄" && shippingInfo !== "離島" && shippingInfo !== "海外") {
         paypalButtonContainer.style.display = "block"; // 配送先が選択された後に決済ボタンを表示
     }
 
