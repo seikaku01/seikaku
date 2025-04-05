@@ -51,11 +51,12 @@
                 <label for="shipping-info">配送先:</label>
                 <select id="shipping-info" onchange="updateShippingFee(); renderPaypalButton();">
                     <option value="">配送エリアを選択</option>
+                    <option value="本州四国九州">本州・四国・九州</option>
                     <option value="東北">東北（宮城県、山形県、福島県、青森県、秋田県、岩手県）</option>
                     <option value="北海道">北海道</option>
+                    <option value="その他">その他</option>
                     <option value="沖縄">沖縄</option>
                     <option value="海外">海外</option>
-                    <option value="その他">その他</option>
                 </select>
 
                 <!-- クーポンコード入力フォーム -->
@@ -64,6 +65,7 @@
                     <button onclick="applyCoupon()">適用</button>
                     <p id="coupon-message"></p>
                 </div>
+
                 <!-- エラーメッセージ -->
                 <p id="shipping-error" style="color: red; font-weight: bold;"></p>
 
@@ -106,6 +108,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- PayPalボタン -->
+        <div id="paypal-button-container" style="display: none;"></div>
 
         <!-- Instagramセクション -->
         <div class="instagram-section">
