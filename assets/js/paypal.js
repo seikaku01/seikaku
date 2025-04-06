@@ -45,45 +45,26 @@ function updateShippingFee() {
     // PayPalボタンを表示
     if (shippingInfo !== "沖縄" && shippingInfo !== "離島" && shippingInfo !== "海外") {
         paypalButtonContainer.style.display = "block"; // 配送先が選択された後に決済ボタンを表示
+        renderPaypalButton(finalPrice); // 配送先が選択された後に決済ボタンを表示
     }
 
     updatePaypalAmount(finalPrice); // PayPal金額を更新
 }
 
-// クーポンコードの処理
-function applyCoupon() {
-    const correctCoupon = "DISCOUNT1500"; // クーポンコード
-    const inputCode = document.getElementById("coupon-code").value;
-    const messageElement = document.getElementById("coupon-message");
+// PayPalボタンをレンダリングする関数
+function renderPaypalButton(finalPrice) {
+    const paypalButtonContainer = document.getElementById('paypal-button-container');
+    
+    // 既存のPayPalボタンを削除して新しいボタンを追加
+    paypalButtonContainer.innerHTML = '';
 
-    if (inputCode === correctCoupon) {
-        discountAmount = 1500; // クーポン適用
-        messageElement.textContent = "クーポンが適用されました！";
-        messageElement.style.color = "green";  // クーポンが正しい場合
-    } else {
-        discountAmount = 0;  // クーポンが無効の場合
-        messageElement.textContent = "クーポンコードが誤っています";
-        messageElement.style.color = "red"; // クーポンコードが誤っている場合
-    }
-
-    // 配送先エリアが選択されている場合、最終金額を再計算
-    updateShippingFee();
-}
-
-// PayPalの金額を更新する
-function updatePaypalAmount(newAmount) {
-    const existingButton = document.getElementById('paypal-button-container');
-    if (existingButton) {
-        existingButton.innerHTML = ''; // 既存のボタンを削除
-    }
-
-    // 1回だけペイパルボタンを初期化して表示
+    // PayPalボタンを初期化して表示
     paypal.Buttons({
         createOrder: function(data, actions) {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: newAmount.toString() // 新しい金額を設定
+                        value: finalPrice.toString() // 新しい金額を設定
                     }
                 }]
             });
