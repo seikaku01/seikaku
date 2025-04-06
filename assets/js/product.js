@@ -1,7 +1,3 @@
-let finalPrice = 16500; // 製品単価（初期は16500円）
-let discountAmount = 0; // 割引額（初期は0）
-let shippingFee = 0; // 送料（初期は0）
-
 // 配送先による送料の設定
 function updateShippingFee() {
     const shippingInfo = document.getElementById('shipping-info').value;
@@ -9,7 +5,6 @@ function updateShippingFee() {
     const shippingFeeElement = document.getElementById('shipping-fee');
     const priceTextElement = document.getElementById('price-text');
     const paypalButtonContainer = document.getElementById('paypal-button-container');
-    const inquiryMessage = document.getElementById('inquiry-message');
     
     // 配送先によって金額を設定
     if (shippingInfo === "本州四国九州") {
@@ -26,7 +21,6 @@ function updateShippingFee() {
         finalPrice = 16500 + shippingFee;
     } else if (shippingInfo === "沖縄" || shippingInfo === "離島" || shippingInfo === "海外") {
         shippingFeeElement.textContent = "配送はできません。";
-        inquiryMessage.style.display = "block"; // お問い合わせフォームを表示
         paypalButtonContainer.style.display = "none"; // PayPalボタンを非表示
         return;  // 配送不可の場合は何も処理しない
     } else {
@@ -44,54 +38,8 @@ function updateShippingFee() {
 
     // PayPalボタンを表示
     if (shippingInfo !== "沖縄" && shippingInfo !== "離島" && shippingInfo !== "海外") {
-        renderPaypalButton(finalPrice); // 配送先が選択された後に決済ボタンを表示
+        paypalButtonContainer.style.display = "block"; // 配送先が選択された後に決済ボタンを表示
     }
 
     updatePaypalAmount(finalPrice); // PayPal金額を更新
-}
-
-// PayPalボタンをレンダリングする関数
-function renderPaypalButton(finalPrice) {
-    const paypalButtonContainer = document.getElementById('paypal-button-container');
-    paypalButtonContainer.style.display = "block"; // 必ず表示されるように設定
-
-    // 既存のPayPalボタンを削除して新しいボタンを追加
-    paypalButtonContainer.innerHTML = '';
-
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: finalPrice.toString() // 新しい金額を設定
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name);
-            });
-        }
-    }).render('#paypal-button-container');
-}
-
-// クーポンコードの処理
-function applyCoupon() {
-    const correctCoupon = "DISCOUNT1500"; // クーポンコード
-    const inputCode = document.getElementById("coupon-code").value;
-    const messageElement = document.getElementById("coupon-message");
-
-    if (inputCode === correctCoupon) {
-        discountAmount = 1500; // クーポン適用
-        messageElement.textContent = "クーポンが適用されました！";
-        messageElement.style.color = "green";  // クーポンが正しい場合
-    } else {
-        discountAmount = 0;  // クーポンが無効の場合
-        messageElement.textContent = "クーポンコードが誤っています";
-        messageElement.style.color = "red"; // クーポンコードが誤っている場合
-    }
-
-    // 配送先エリアが選択されている場合、最終金額を再計算
-    updateShippingFee();
 }
