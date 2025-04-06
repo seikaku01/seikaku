@@ -1,184 +1,184 @@
 /* 全体のスタイル */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
 }
 
 header, footer {
-    background-color: white;
-    color: black;
-    text-align: center;
-    padding: 10px 0;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
 }
 
 header {
-    text-align: left;
-    color: white;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  text-align: left;
+  color: white;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 header nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 header nav ul li {
-    display: inline;
+  display: inline;
 }
 
 header nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2em;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
 }
 
 /* 商品コンテナ */
 .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid #ccc;
 }
 
 .product-left, .product-right {
-    flex: 1;
-    padding: 10px;
+  flex: 1;
+  padding: 10px;
 }
 
 .product-left {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid black;
 }
 
 .product-left img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 /* 右側のコンテンツ */
 .product-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    position: sticky;
-    top: 0;
-    height: calc(100vh - 150px);
-    overflow-y: auto;
-    line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  line-height: 1.5;
 }
 
 /* ペイパルボタンコンテナ */
 #paypal-button-container {
-    display: block;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #f1f1f1;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 /* クーポンコード入力フォーム */
 .coupon-section {
-    margin-top: 20px;
-    text-align: left;
+  margin-top: 20px;
+  text-align: left;
 }
 
 #coupon-code {
-    padding: 5px;
-    margin-right: 10px;
-    font-size: 1em;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 1em;
 }
 
 button {
-    padding: 5px 10px;
-    cursor: pointer;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 #coupon-message {
-    color: red;
-    margin-top: 10px;
+  color: red;
+  margin-top: 10px;
 }
 
 /* 商品画像セクション */
 .product-images {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .dimension-image {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .centered-image {
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto;
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
 }
 
 /* Instagramセクション */
 .instagram-section {
-    text-align: center;
-    margin: 60px 0;
-    font-size: 1.2em;
+  text-align: center;
+  margin: 60px 0;
+  font-size: 1.2em;
 }
 
 .instagram-section p {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .instagram-logo, .X-logo {
-    width: 50px;
-    height: auto;
+  width: 50px;
+  height: auto;
 }
 
 @media (max-width: 768px) {
-    .product-container {
-        flex-direction: column;
-    }
+  .product-container {
+      flex-direction: column;
+  }
 
-    .product-left {
-        border-right: none;
-    }
+  .product-left {
+      border-right: none;
+  }
 
-    .product-right {
-        position: static;
-        height: auto;
-        overflow: visible;
-    }
+  .product-right {
+      position: static;
+      height: auto;
+      overflow: visible;
+  }
 
-    .paypal-button-container {
-        flex-direction: column;
-        align-items: center;
-    }
+  .paypal-button-container {
+      flex-direction: column;
+      align-items: center;
+  }
 
-    .product-images {
-        flex-direction: column;
-    }
+  .product-images {
+      flex-direction: column;
+  }
 
-    .product-right p {
-        text-align: center;
-    }
+  .product-right p {
+      text-align: center;
+  }
 }
