@@ -25,7 +25,7 @@
             </nav>
         </div>
     </header>
-    
+
     <main>
         <div class="product-container">
             <div class="product-left">
@@ -40,14 +40,10 @@
                 <p class="product-title">和服型ナイトウェア</p>
                 <p class="product-size">Free size</p>
                 
-                <!-- 小売価格を固定表示 -->
                 <p>小売価格: <span id="retail-price">16,500</span>円</p>
-
-                <!-- 送料と合計金額表示 -->
                 <p>送料: <span id="shipping-fee">¥0</span></p>
                 <p>価格: <span id="total-price">¥16,500</span>円</p>
 
-                <!-- 配送先情報フォーム -->
                 <label for="shipping-info">配送先:</label>
                 <select id="shipping-info" onchange="updateShippingFee(); renderPaypalButton();">
                     <option value="">配送エリアを選択</option>
@@ -59,14 +55,12 @@
                     <option value="海外">海外</option>
                 </select>
 
-                <!-- クーポンコード入力フォーム -->
                 <div class="coupon-section">
                     <input type="text" id="coupon-code" placeholder="クーポンコードを入力" onkeydown="checkEnter(event)">
                     <button onclick="applyCoupon()">適用</button>
                     <p id="coupon-message"></p>
                 </div>
 
-                <!-- エラーメッセージ -->
                 <p id="shipping-error" style="color: red; font-weight: bold;"></p>
 
                 <div class="product-description">
@@ -96,7 +90,6 @@
                     <p>・ウエスト 70cm - 110cm</p>
                 </div>
 
-                <!-- 商品画像セクション -->
                 <div class="product-images">
                     <img src="assets/images/product1 写真２.png" alt="Product Image 1" class="centered-image">
                     <img src="assets/images/上着 寸法.png" alt="Product Image 1" class="dimension-image">
@@ -112,7 +105,6 @@
         <!-- PayPalボタン -->
         <div id="paypal-button-container" style="display: none;"></div>
 
-        <!-- Instagramセクション -->
         <div class="instagram-section">
             <p>Social media </p>
             <a href="https://www.instagram.com/seikaku_jp?igsh=bDV6Y3NwajB4amxn&utm_source=qr" target="_blank">
