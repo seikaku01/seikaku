@@ -1,284 +1,270 @@
-  /* 全体のスタイル */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    color: black;
-  }
+/* 全体のスタイル */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+}
 
-  header, footer {
-    background-color: white;
-    color: black;
-    text-align: center;
-    padding: 10px 0;
-  }
+header, footer {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+}
 
-  header {
-    text-align: left;
-    color: white;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
+header {
+  text-align: left;
+  color: white;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-  header nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
 
-  header nav ul li {
-    display: inline;
-  }
+header nav ul li {
+  display: inline;
+}
 
-  header nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2em;
-  }
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
 
-  /* 商品コンテナ */
+/* 商品コンテナ */
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-left, .product-right {
+  flex: 1;
+  padding: 10px;
+}
+
+.product-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid black;
+}
+
+.product-left img {
+  width: 100%;
+  height: auto;
+}
+
+/* 右側のコンテンツ */
+.product-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+  text-align: center; /* 中央揃え */
+  gap: 10px;
+  position: relative; /* PayPalボタンを右側に配置するため */
+  height: auto;
+  line-height: 1.5; /* 行間を適度に設定 */
+}
+
+/* ペイパルボタンコンテナ */
+.paypal-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+  justify-content: center;
+  padding: 20px;
+  background-color: #000;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  width: 80%;  /* 横幅を80%にして小売価格の下に収まるように調整 */
+  margin-top: 20px; /* 小売価格の下に表示されるように調整 */
+}
+
+.paypal-button-container h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.paypal-button-container p {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+#paypal-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* クーポンコード入力フォーム */
+.coupon-section {
+  margin-top: 20px;
+  text-align: left; /* 左揃え */
+}
+
+#coupon-code {
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#coupon-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* 商品画像セクション */
+.product-images {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 左揃え */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dimension-image {
+  width: 100%;
+  height: auto;
+}
+
+.centered-image {
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Instagramセクション */
+.instagram-section {
+  text-align: center; /* 中央揃え */
+  margin: 60px 0;
+  font-size: 1.2em;
+}
+
+.instagram-section p {
+  margin-bottom: 30px;
+}
+
+.instagram-logo, .X-logo {
+  width: 50px;
+  height: auto;
+}
+
+/* モバイルビュー */
+@media (max-width: 768px) {
   .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .product-left, .product-right {
-    flex: 1;
-    padding: 10px;
+    flex-direction: column;
   }
 
   .product-left {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-right: 1px solid black;
+    border-right: none;
   }
 
-  .product-left img {
-    width: 100%;
-    height: auto;
-  }
-
-  /* 右側のコンテンツ */
   .product-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 中央揃え */
-    text-align: center; /* 中央揃え */
-    gap: 10px;
-    position: sticky;
-    top: 0;
-    height: calc(100vh - 150px);
-    overflow-y: auto;
-    line-height: 1.5; /* 行間を適度に設定 */
+    position: static;
+    height: auto;
+    overflow: visible;
   }
 
-  /* ペイパルボタンコンテナ */
   .paypal-button-container {
-    display: flex;
     flex-direction: column;
-    align-items: center; /* 中央揃え */
-    justify-content: center;
-    padding: 20px;
-    background-color: #000;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    gap: 15px;
+    align-items: center;
+    width: 100%; /* モバイルでもボタンを広げる */
   }
 
-  .paypal-button-container h2 {
-    font-size: 1.5em;
-    margin: 0;
-  }
-
-  .paypal-button-container p {
-    font-size: 1.2em;
-    margin: 0;
-  }
-
-  #paypal-button-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  /* クーポンコード入力フォーム */
-  .coupon-section {
-    margin-top: 20px;
-    text-align: left; /* 左揃え */
-  }
-
-  #coupon-code {
-    padding: 5px;
-    margin-right: 10px;
-    font-size: 1em;
-  }
-
-  button {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-
-  #coupon-message {
-    color: red;
-    margin-top: 10px;
-  }
-
-  /* 商品画像セクション */
   .product-images {
-    display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 左揃え */
-    gap: 10px;
-    margin-bottom: 10px;
   }
 
-  .dimension-image {
-    width: 100%;
-    height: auto;
+  .product-right p {
+    text-align: center; /* モバイルでも中央揃え */
   }
+}
 
-  .centered-image {
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto;
-  }
+/* ハンバーガーメニューアイコン */
+header .menu-icon {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
 
-  /* Instagramセクション */
-  .instagram-section {
-    text-align: center; /* 中央揃え */
-    margin: 60px 0;
-    font-size: 1.2em;
-  }
+header .nav-links {
+  display: flex;
+  justify-content: flex-start;
+}
 
-  .instagram-section p {
-    margin-bottom: 30px;
-  }
+header .nav-links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
 
-  .instagram-logo, .X-logo {
-    width: 50px;
-    height: auto;
-  }
+header .nav-links ul li {
+  margin: 0 20px;
+}
 
-  /* モバイルビュー */
-  @media (max-width: 768px) {
-    .product-container {
-      flex-direction: column;
-    }
+header .nav-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
 
-    .product-left {
-      border-right: none;
-    }
+header .nav-links.show {
+  display: block;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px 0;
+}
 
-    .product-right {
-      position: static;
-      height: auto;
-      overflow: visible;
-    }
-
-    .paypal-button-container {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product-images {
-      flex-direction: column;
-    }
-
-    .product-right p {
-      text-align: center; /* モバイルでも中央揃え */
-    }
-  }
-
-  /* ハンバーガーメニューアイコン */
+@media (max-width: 768px) {
   header .menu-icon {
-    display: none;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
+    display: block;
   }
 
   header .nav-links {
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  header .nav-links ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-
-  header .nav-links ul li {
-    margin: 0 20px;
-  }
-
-  header .nav-links ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
+    display: none;
   }
 
   header .nav-links.show {
     display: block;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: black;
-    padding: 10px 0;
   }
 
-  @media (max-width: 768px) {
-    header .menu-icon {
-      display: block;
-    }
-
-    header .nav-links {
-      display: none;
-    }
-
-    header .nav-links.show {
-      display: block;
-    }
-
-    header .nav-links ul {
-      display: block;
-      text-align: left;
-    }
-
-    header .nav-links ul li {
-      display: block;
-      margin: 10px 0;
-    }
+  header .nav-links ul {
+    display: block;
+    text-align: left;
   }
-/* 和服型ナイトウェアのスタイル */
-.product-title {
-  font-size: 2em;  /* 大きめの文字サイズ */
-  font-weight: bold;
-  text-align: center; /* 中央揃え */
-  width: 100%;  /* 横幅を調整 */
-  margin-bottom: 0; /* 行間を詰める */
+
+  header .nav-links ul li {
+    display: block;
+    margin: 10px 0;
+  }
 }
 
-/* フリーサイズのスタイル */
-.product-size {
-  font-size: 1.5em;  /* 文字のサイズを調整 */
-  text-align: center; /* 中央揃え */
-  margin-top: -10px;  /* 上の余白を削除 */
-  margin-bottom: 0;  /* 下の余白を削除 */
-}
 /* 和服型ナイトウェアのスタイル */
 .product-title {
   font-size: 2em;  /* 大きめの文字サイズ */
