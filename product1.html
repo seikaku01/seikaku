@@ -1,111 +1,133 @@
-let finalPrice = 16500;
-let discountAmount = 0;
-let shippingFee = 0;
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SEIKAKU LLCの製品”Yoru”について詳しく書いています。">
+    <title>Product 1</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/shop.css">
+    <link rel="stylesheet" href="assets/css/product1.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=AYPby53GhCePMotBhgDUCQoJCC1YqfIrafqCXxBlVQQfo6u4VN0bA3lgySr77e6kFbgl3ZjXnxg-MYBx&currency=JPY"></script>
+</head>
+<body>
+    <header class="shop-header">
+        <div class="header-content">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="shop.html">SHOP</a></li>
+                    <li><a href="story.html">STORY</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="lookbook.html">LOOKBOOK</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-function updateShippingFee() {
-    const shippingInfo = document.getElementById('shipping-info').value;
-    const priceElement = document.getElementById('total-price');
-    const shippingFeeElement = document.getElementById('shipping-fee');
-    const priceTextElement = document.getElementById('price-text');
-    const paypalButtonContainer = document.getElementById('paypal-button-container');
-    const inquiryMessage = document.getElementById('inquiry-message');
-    
-    if (shippingInfo === "本州四国九州") {
-        shippingFee = 500;
-        finalPrice = 16500 + shippingFee;
-    } else if (shippingInfo === "東北") {
-        shippingFee = 650;
-        finalPrice = 16500 + shippingFee;
-    } else if (shippingInfo === "北海道") {
-        shippingFee = 700;
-        finalPrice = 16500 + shippingFee;
-    } else if (shippingInfo === "その他") {
-        shippingFee = 550;
-        finalPrice = 16500 + shippingFee;
-    } else if (shippingInfo === "沖縄" || shippingInfo === "離島" || shippingInfo === "海外") {
-        shippingFeeElement.textContent = "配送はできません。";
-        inquiryMessage.style.display = "block";
-        paypalButtonContainer.style.display = "none";
-        return;
-    } else {
-        shippingFee = 0;
-        finalPrice = 16500;
-    }
+    <main>
+        <div class="product-container">
+            <div class="product-left">
+                <img src="assets/images/product 上着1.jpg" alt="Product Image 1">
+                <img src="assets/images/product 上着2.jpg" alt="Product Image 2">
+                <img src="assets/images/product 上着3.jpg" alt="Product Image 3">
+                <img src="assets/images/product パンツ1.jpg" alt="Product Image 4">
+                <img src="assets/images/product パンツ2.jpg" alt="Product Image 5">
+                <img src="assets/images/product パンツ3.jpg" alt="Product Image 6">
+            </div>
+            <div class="product-right">
+                <p class="product-title">和服型ナイトウェア</p>
+                <p class="product-size">Free size</p>
+                
+                <p>小売価格: <span id="retail-price">16,500</span>円</p>
+                <p>送料: <span id="shipping-fee">¥0</span></p>
+                <p>価格: <span id="total-price">¥16,500</span>円</p>
 
-    finalPrice -= discountAmount;
+                <label for="shipping-info">配送先:</label>
+                <select id="shipping-info" onchange="updateShippingFee(); renderPaypalButton();">
+                    <option value="">配送エリアを選択</option>
+                    <option value="本州四国九州">本州・四国・九州</option>
+                    <option value="東北">東北（宮城県、山形県、福島県、青森県、秋田県、岩手県）</option>
+                    <option value="北海道">北海道</option>
+                    <option value="その他">その他</option>
+                    <option value="沖縄">沖縄</option>
+                    <option value="海外">海外</option>
+                </select>
 
-    priceElement.textContent = finalPrice.toLocaleString();
-    priceTextElement.textContent = `価格: ¥${finalPrice.toLocaleString()} (税込)`;
-    shippingFeeElement.textContent = `送料: ¥${shippingFee}`;
+                <div class="coupon-section">
+                    <input type="text" id="coupon-code" placeholder="クーポンコードを入力" onkeydown="checkEnter(event)">
+                    <button onclick="applyCoupon()">適用</button>
+                    <p id="coupon-message"></p>
+                </div>
 
-    if (shippingInfo !== "沖縄" && shippingInfo !== "離島" && shippingInfo !== "海外") {
-        renderPaypalButton(finalPrice);
-    }
+                <p id="shipping-error" style="color: red; font-weight: bold;"></p>
 
-    updatePaypalAmount(finalPrice);
-}
+                <div class="product-description">
+                    <h2>Description</h2>
+                    <p>日本の4つの伝統衣装である、“羽織・腹巻・甚平・作務衣”から着想を得た</p>
+                    <p>新しいスタイルのナイトウェア兼ルームウェアです。</p>
+                    <h2>特徴</h2>
+                    <p>【腹巻付きパンツ】</p>
+                    <p>・従来の腹巻単体での着脱の煩わしさを解消</p>
+                    <p>・吸汗性が優れた生地で寝汗からくる冷えへの対策</p>
+                    <p>【羽織式ポケット】</p>
+                    <p>・収納便利な羽織式ポケットを搭載</p>
+                    <p>【洗濯ができる和服】</p>
+                    <p>・乾きやすい生地で毎日の洗濯にも対応</p>
+                    <p>【フリーサイズ】</p>
+                    <p>・上着に三段階のサイズ調整ができるアタッチメント付</p>
+                    <p>【“寝巻き×手帳”モチベーションウェア】</p>
+                    <p>・自社制作アプリ（To-Do List）で自己管理</p>
+                    <p>・上着に付属のQRコードを読み取り連携</p>
+                    <h2>商品の詳細</h2>
+                    <p>・カラー：濃紺</p>
+                    <p>・身生地（上下）：ポリエステル 100%</p>                
+                    <p>・腹巻生地　　　：ポリエステル 87%</p>
+                    <p>・製造国：中国</p>
+                    <h2>サイズ</h2>
+                    <p>・フリーサイズ</p>
+                    <p>・ウエスト 70cm - 110cm</p>
+                </div>
 
-function renderPaypalButton(finalPrice) {
-    const paypalButtonContainer = document.getElementById('paypal-button-container');
-    paypalButtonContainer.style.display = "block";
-    paypalButtonContainer.innerHTML = '';
+                <div class="product-images">
+                    <img src="assets/images/product1 写真２.png" alt="Product Image 1" class="centered-image">
+                    <img src="assets/images/上着 寸法.png" alt="Product Image 1" class="dimension-image">
+                </div>
+                <p>パンツ</p>
+                <div class="product-images">
+                    <img src="assets/images/product1 写真.png" alt="Product Image 2" class="centered-image">
+                    <img src="assets/images/ズボン 寸法.png" alt="Product Image 2" class="dimension-image">
+                </div>
+            </div>
+        </div>
 
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: finalPrice.toString()
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name);
-            });
-        }
-    }).render('#paypal-button-container');
-}
+        <!-- PayPalボタン -->
+        <div id="paypal-button-container" style="display: none;"></div>
 
-function applyCoupon() {
-    const correctCoupon = "DISCOUNT1500";
-    const inputCode = document.getElementById("coupon-code").value;
-    const messageElement = document.getElementById("coupon-message");
+        <div class="instagram-section">
+            <p>Social media </p>
+            <a href="https://www.instagram.com/seikaku_jp?igsh=bDV6Y3NwajB4amxn&utm_source=qr" target="_blank">
+                <img src="./assets/images/instagram black.png" alt="Instagram Logo" class="instagram-logo">
+            </a>
+            <a href="https://x.com/SEIKAKU_JP" target="_blank">
+                <img src="./assets/images/X logo white.png" alt="X Logo" class="X-logo">
+            </a>
+        </div>
 
-    if (inputCode === correctCoupon) {
-        discountAmount = 1500;
-        messageElement.textContent = "クーポンが適用されました！";
-        messageElement.style.color = "green";
-    } else {
-        discountAmount = 0;
-        messageElement.textContent = "クーポンコードが誤っています";
-        messageElement.style.color = "red";
-    }
+        <div class="bottom-section">
+            <ul>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </main>
 
-    updateShippingFee();
-}
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
 
-function updatePaypalAmount(newAmount) {
-    const existingButton = document.getElementById('paypal-button-container');
-    if (existingButton) {
-        existingButton.innerHTML = '';
-    }
-
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: newAmount.toString()
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name);
-            });
-        }
-    }).render('#paypal-button-container');
-}
+    <script src="assets/js/product.js"></script>
+    <script src="assets/js/paypal.js"></script>
+</body>
+</html>
