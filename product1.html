@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/shop.css">
     <link rel="stylesheet" href="assets/css/product1.css">
-    <script src="https://www.paypal.com/sdk/js?client-id=AYPby53GhCePMotBhgDUCQoJCC1YqfIrafqCXxBlVQQfo6u4VN0bA3lgySr77e6kFbgl3ZjXnxg-MYBx&currency=JPY"></script>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAuLVBLe_mG69UoqmIAAjw6uitRY1N2wlBBVrwex1s7gUI3J2jX-ih5TAYABHbZdl6SkojA32X2g8stEE&components=hosted-buttons&disable-funding=venmo&currency=JPY"></script>
 </head>
 <body>
     <header class="shop-header">
@@ -25,7 +27,7 @@
             </nav>
         </div>
     </header>
-    
+
     <main>
         <div class="product-container">
             <div class="product-left">
@@ -41,48 +43,46 @@
                 <p class="product-title">和服型ナイトウェア</p>
                 <p class="product-size">Free size</p>
 
-                <p>小売価格: <span id="retail-price">16,500</span>円</p>
-                <p>送料: <span id="shipping-fee">¥0</span></p>
-                <p>価格: <span id="total-price">¥16,500</span>円</p>
+                <p>小売価格: <span id="price-display">¥16,500</span></p>
+                <p>送料は配送エリアごとで異なるため、決済時に選択ください。</p>
+                <p>※沖縄、離島、海外の方はお問合せフォームへご連絡ください。</p>
 
-                <!-- 配送先情報フォーム -->
-                <label for="shipping-info">配送先:</label>
-                <select id="shipping-info" onchange="updateShippingFee();">
-                    <option value="">配送エリアを選択</option>
-                    <option value="本州四国九州">本州・四国・九州</option>
-                    <option value="東北">東北</option>
-                    <option value="北海道">北海道</option>
-                    <option value="その他">その他</option>
-                    <option value="沖縄">沖縄</option>
-                    <option value="海外">海外</option>
-                </select>
+                <!-- PayPalボタンの表示場所 -->
+                <div id="paypal-button-container" style="margin-top: 20px;"></div>
 
-                <!-- 商品詳細 -->
+
+                
+                <!-- クーポンコード入力フォーム -->
+                <div class="coupon-section">
+                    <label for="coupon-code">クーポンコード</label>
+                    <input type="text" id="coupon-code" placeholder="クーポンコードを入力">
+                    <button id="apply-coupon-btn" onclick="applyCoupon()">適用</button>
+                    <p id="coupon-message"></p>
+                </div>
+
+                <!-- 商品説明（省略なし） -->
                 <div class="product-description">
                     <h2>Description</h2>
                     <p>日本の4つの伝統衣装である、“羽織・腹巻・甚平・作務衣”から着想を得た</p>
                     <p>新しいスタイルのナイトウェア兼ルームウェアです。</p>
                     <h2>特徴</h2>
-                    <p>【腹巻付きパンツ】</p>
-                    <p>・従来の腹巻単体での着脱の煩わしさを解消</p>
-                    <p>・吸汗性が優れた生地で寝汗からくる冷えへの対策</p>
-                    <p>【羽織式ポケット】</p>
-                    <p>・収納便利な羽織式ポケットを搭載</p>
-                    <p>【洗濯ができる和服】</p>
-                    <p>・乾きやすい生地で毎日の洗濯にも対応</p>
-                    <p>【フリーサイズ】</p>
-                    <p>・上着に三段階のサイズ調整ができるアタッチメント付</p>
-                    <p>【“寝巻き×手帳”モチベーションウェア】</p>
-                    <p>・自社制作アプリ（To-Do List）で自己管理</p>
-                    <p>・上着に付属のQRコードを読み取り連携</p>
+                    <p>【腹巻付きパンツ】・従来の腹巻単体での着脱の煩わしさを解消<br>
+                    ・吸汗性が優れた生地で寝汗からくる冷えへの対策</p>
+                    <p>【羽織式ポケット】・収納便利な羽織式ポケットを搭載</p>
+                    <p>【洗濯ができる和服】・乾きやすい生地で毎日の洗濯にも対応</p>
+                    <p>【フリーサイズ】・上着に三段階のサイズ調整ができるアタッチメント付</p>
+                    <p>【“寝巻き×手帳”モチベーションウェア】・自社制作アプリで自己管理<br>
+                    ・上着に付属のQRコードを読み取り連携</p>
+
                     <h2>商品の詳細</h2>
-                    <p>・カラー：濃紺</p>
-                    <p>・身生地（上下）：ポリエステル 100%</p>                
-                    <p>・腹巻生地　　　：ポリエステル 87%</p>
-                    <p>・製造国：中国</p>
+                    <p>・カラー：濃紺<br>
+                       ・身生地（上下）：ポリエステル 100%<br>
+                       ・腹巻生地：ポリエステル 87%<br>
+                       ・製造国：中国</p>
+
                     <h2>サイズ</h2>
-                    <p>・フリーサイズ</p>
-                    <p>・ウエスト 70cm - 110cm</p>
+                    <p>・フリーサイズ<br>
+                       ・ウエスト 70cm - 110cm</p>
                 </div>
 
                 <!-- 商品画像 -->
@@ -95,16 +95,13 @@
                     <img src="assets/images/product1 写真.png" alt="Product Image 2" class="centered-image">
                     <img src="assets/images/ズボン 寸法.png" alt="Product Image 2" class="dimension-image">
                 </div>
-
-                <!-- PayPalボタン -->
-                <div id="paypal-button-container" style="display: none;"></div>
             </div>
         </div>
 
         <!-- Instagramセクション -->
         <div class="instagram-section">
             <p>Social media </p>
-            <a href="https://www.instagram.com/seikaku_jp?igsh=bDV6Y3NwajB4amxn&utm_source=qr" target="_blank">
+            <a href="https://www.instagram.com/seikaku_jp" target="_blank">
                 <img src="./assets/images/instagram black.png" alt="Instagram Logo" class="instagram-logo">
             </a>
             <a href="https://x.com/SEIKAKU_JP" target="_blank">
@@ -112,11 +109,19 @@
             </a>
         </div>
     </main>
+
     <footer>
         <p>&copy; 2024 Your Company. All rights reserved.</p>
     </footer>
 
-    <script src="assets/js/product.js"></script>
+    <!-- 分離されたJavaScriptファイル -->
     <script src="assets/js/paypal.js"></script>
 </body>
 </html>
+<script>
+    window.onload = function () {
+      paypal.HostedButtons({
+        hostedButtonId: "VAUMG9SWYY592"
+      }).render("#paypal-button-container");
+    };
+  </script>
