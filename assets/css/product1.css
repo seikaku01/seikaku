@@ -44,20 +44,22 @@ header nav ul li a {
 /* 商品コンテナ */
 .product-container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between; /* 左右のレイアウトを分ける */
+  gap: 20px; /* 左右の要素間に隙間を作る */
   padding: 20px;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid #ccc;
+  flex-wrap: wrap; /* スマホなど小さい画面でも折り返し */
 }
 
-/* 左側のコンテンツ */
+/* 左側のコンテンツ（商品画像） */
 .product-left {
+  flex: 1; /* 左側を1/2の幅に */
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-right: 1px solid black;
-  flex: 1;
+  max-width: 50%; /* 幅を50%に設定 */
 }
 
 .product-left img {
@@ -65,33 +67,64 @@ header nav ul li a {
   height: auto;
 }
 
-/* 右側のコンテンツ */
+/* 右側のコンテンツ（購入情報） */
 .product-right {
+  flex: 1; /* 右側を1/2の幅に */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 10px;
-  flex: 1;
+  max-width: 50%; /* 幅を50%に設定 */
   position: sticky;
   top: 0;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 150px); /* 高さを画面いっぱいに設定 */
   overflow-y: auto;
   line-height: 1.5;
 }
 
-/* ペイパルボタンコンテナ */
+/* PayPalボタンコンテナ */
 #paypal-button-container {
-  display: none;
-  margin-top: 20px;
+
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #f1f1f1;
+  max-width: 400px;
+  margin: 0 auto;
   padding: 10px;
-  border-radius: 5px;
-  text-align: center;
+}
+/* PayPalボタンのボタン部分 */
+.paypal-button {
+  font-size: 16px; /* フォントサイズを少し小さく */
+  padding: 10px 25px; /* ボタンの上下を小さく、左右は適切な余白に */
+  background-color: #ffcc00; /* PayPalの黄色に設定 */
+  color: #ffffff; /* 文字色を白に設定 */
+  border: none; /* 枠線なし */
+  border-radius: 8px; /* ボタンの角を丸める */
+  text-transform: uppercase; /* テキストを大文字にする */
+  width: 100%; /* ボタンを横幅いっぱいに */
+  cursor: pointer; /* ポインターカーソルに */
+  display: flex;
+  justify-content: center; /* 中央揃え */
+  align-items: center; /* 垂直方向も中央揃え */
+}
+
+.paypal-button:hover {
+  background-color: #e6b800; /* ホバー時の色変更 */
+  transition: background-color 0.3s ease; /* 色変化のアニメーション */
+}
+
+/* PayPalボタン下の補助ボタン（VISA, MasterCardなど） */
+.paypal-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* アイコンの間にスペース */
+  margin-top: 10px; /* 上部に余白 */
+}
+
+.paypal-button-container img {
+  width: 30px; /* アイコンのサイズを小さく */
+  height: auto;
 }
 
 /* クーポンコード入力フォーム */
@@ -152,31 +185,70 @@ button {
   height: auto;
 }
 
+/* レスポンシブデザイン: モバイル向け */
 @media (max-width: 768px) {
   .product-container {
-      flex-direction: column;
+    flex-direction: column; /* モバイルでは縦並び */
   }
 
   .product-left {
-      border-right: none;
+    border-right: none;
   }
 
   .product-right {
-      position: static;
-      height: auto;
-      overflow: visible;
+    position: static;
+    height: auto;
+    overflow: visible;
   }
 
   .paypal-button-container {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .product-images {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .product-right p {
-      text-align: center;
+    text-align: center;
   }
+}
+/* 商品タイトルとサイズ */
+.product-title {
+  font-size: 30px; /* フォントサイズを大きく */
+  letter-spacing: -0.5px; /* 文字間隔を狭く */
+  font-weight: bold; /* 太字にして強調 */
+
+}
+
+.product-size {
+  font-size: 20px; /* フォントサイズを少し大きく */
+  letter-spacing: -0.5px; /* 文字間隔を狭く */
+  line-height: 0.5; /* 行間を詰める */
+}
+.product-right p {
+  line-height: 1; /* 行間を詰める */
+  margin-bottom: 10px; /* 各テキスト間の余白 */
+}
+/* クーポンコード入力フォーム */
+.coupon-section {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#coupon-code {
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+#apply-coupon-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#coupon-message {
+  color: green;
+  margin-top: 10px;
 }
