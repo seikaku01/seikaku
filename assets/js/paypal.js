@@ -1,29 +1,38 @@
-// ペイパルボタンをレンダリング
-function renderPaypalButton(finalPrice) {
-    const paypalButtonContainer = document.getElementById('paypal-button-container');
-    if (document.getElementById('shipping-info').value !== "沖縄" && document.getElementById('shipping-info').value !== "海外") {
-        paypalButtonContainer.style.display = "block"; // 配送エリアが沖縄・海外以外ならボタンを表示
+window.onload = function () {
+    // 初期表示は通常価格のHosted Button
+    paypal.HostedButtons({
+      hostedButtonId: "VAUMG9SWYY592" // ← 通常価格のボタンID
+    }).render("#paypal-button-container");
+  };
+  
+  function applyCoupon() {
+    const code = document.getElementById("coupon-code").value.trim();
+    const message = document.getElementById("coupon-message");
+    const priceDisplay = document.getElementById("price-display");
+    const container = document.getElementById("paypal-button-container");
+  
+    // PayPalボタンの中身を一度クリア（ボタンの入れ替え準備）
+    container.innerHTML = "";
+  
+    if (code === "DISCOUNT1500") {
+      message.textContent = "クーポンコードが適用されました！¥1500引きです。";
+      message.style.color = "green";
+      priceDisplay.textContent = "¥15,000";
+  
+      // クーポン適用後のHosted Buttonを表示
+      paypal.HostedButtons({
+        hostedButtonId: "AN78AN3WTRU2W" // ← 割引価格のボタンID
+      }).render("#paypal-button-container");
+  
     } else {
-        paypalButtonContainer.style.display = "none"; // 沖縄・海外の場合は非表示
+      message.textContent = "無効なクーポンコードです。";
+      message.style.color = "red";
+      priceDisplay.textContent = "¥16,500";
+  
+      // 通常価格のボタンに戻す
+      paypal.HostedButtons({
+        hostedButtonId: "VAUMG9SWYY592"
+      }).render("#paypal-button-container");
     }
-
-    // 既存のPayPalボタンを削除して新しいボタンを追加
-    paypalButtonContainer.innerHTML = '';
-
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: finalPrice.toString() // 新しい金額を設定
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('取引が完了しました。ありがとうございます ' + details.payer.name.given_name);
-            });
-        }
-    }).render('#paypal-button-container');
-}
+  }
+  
